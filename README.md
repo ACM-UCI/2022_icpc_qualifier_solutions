@@ -58,3 +58,14 @@ The key, however, is to realize that this complexity is feasible for the problem
 
 There are a variety of ways to implement this problem, probably the most intuitive would be a recursively backtracking dfs were you search one color at a time for a feasible path from some starting cell to an ending cell.
 There is an interconnected relationship between all the colors so the bruteforce cannot handle each color entirely separately; instead you must keep track of what cells have been taken by other colors.
+
+
+## [Killing Chaos](https://open.kattis.com/problems/killingchaos)
+* Difficulty: Medium
+* Categories: Connected Components, Math, Offline Algorithms, Union Find
+
+### Solution
+If you reframe the question from one about removing coaches and instead one about adding coaches, it becomes obvious that it can be reduced to a connected components problem.
+This reframing is achieved by reversing the order in which the coaches are removed.
+Then, using the [Union Find](https://cp-algorithms.com/data_structures/disjoint_set_union.html) data structure, keep track of the sums of each connected component and the number of connected components.
+Components can be merged which consequently updates the sum and reduces the number of cars.
