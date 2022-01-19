@@ -20,3 +20,13 @@ There also exists a simple mathematical solution: The answer is `N+1` times `X` 
 Starting from the back of the ciphertext, we can get the key that was used by subtracting known plaintext character from the ciphertext character.
 As the problem is defined, this derived key is the plaintext character `n` characters prior.
 Thus, as a plaintext character is revealed, it reveals a corresponding key which is the plaintext character of a previous character.
+
+
+## [Musical Notation](https://open.kattis.com/problems/musicalnotation)
+* Difficulty: Easy
+* Categories: Ad-Hoc, Implemenation, Strings
+
+### Solution
+This is an implementation problem so there are a variety of different ways to approach this problem.
+The key is write organized and well-structured code.
+An example of a possible approach is to build the strings for each tone on the staff one note at a time.
