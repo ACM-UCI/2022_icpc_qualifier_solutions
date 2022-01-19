@@ -24,7 +24,7 @@ Thus, as a plaintext character is revealed, it reveals a corresponding key which
 
 ## [Musical Notation](https://open.kattis.com/problems/musicalnotation)
 * Difficulty: Easy
-* Categories: Ad-Hoc, Implemenation, Strings
+* Categories: Ad-Hoc, Implementation, Strings
 
 ### Solution
 This is an implementation problem so there are a variety of different ways to approach this problem.
@@ -43,3 +43,18 @@ What you can notice is that if, for an index `i`, the index which yields the max
 Thus, we can simply keep a running maximum as we iterate through the array.
 As a small caveat, because we are taking the absolute value, we need to also keep a running minimum as we iterate through the array.
 With these running maximums and minimums, every step through the array we need to add `C` to the minimum and subtract `C` from the maximum because of the `c|i-j|` term in the formula.
+
+
+## [Flow Free](https://open.kattis.com/problems/flowfree)
+* Difficulty: Medium
+* Categories: Backtracking, Bruteforce, DFS, Graph, Implementation
+
+### Solution
+To understand why a bruteforce approach works here you can analyze the complexity of the problem.
+Because it is guaranteed that board will always be 4x4 and that there will be at least 3 colors, we know that there will be at most 10 unfilled squares.
+If we were to bruteforce every possible filling of these squares, since there are at most 4 colors, there are `4^10 = 1048576` different ways to fill in the squares.
+The math actually works out too a smaller number because this type of board would only have 3 colors.
+The key, however, is to realize that this complexity is feasible for the problem.
+
+There are a variety of ways to implement this problem, probably the most intuitive would be a recursively backtracking dfs were you search one color at a time for a feasible path from some starting cell to an ending cell.
+There is an interconnected relationship between all the colors so the bruteforce cannot handle each color entirely separately; instead you must keep track of what cells have been taken by other colors.
