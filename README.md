@@ -53,7 +53,7 @@ With these running maximums and minimums, every step through the array we need t
 To understand why a bruteforce approach works here you can analyze the complexity of the problem.
 Because it is guaranteed that board will always be 4x4 and that there will be at least 3 colors, we know that there will be at most 10 unfilled squares.
 If we were to bruteforce every possible filling of these squares, since there are at most 4 colors, there are `4^10 = 1048576` different ways to fill in the squares.
-The math actually works out too a smaller number because this type of board would only have 3 colors.
+The math actually works out to a smaller number because this type of board would only have 3 colors.
 The key, however, is to realize that this complexity is feasible for the problem.
 
 There are a variety of ways to implement this problem, probably the most intuitive would be a recursively backtracking dfs were you search one color at a time for a feasible path from some starting cell to an ending cell.
