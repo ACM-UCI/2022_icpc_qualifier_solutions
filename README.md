@@ -5,6 +5,7 @@
 * Categories: Ad-Hoc, Math
 
 ### Solution
-Simulate the problem by iterating through the $N$ months and computing the carryover.
-If you are on month $i$, the carryover into month $i+1$ is $C_{i+1}$
+Simulate the problem by iterating through the `N` months and computing the carryover.
+The carryover into the next month is the sum of the previous carryover and `X` minus the data used in that month `Pi`.
 
+There also exists a simple mathematical solution: The answer is `N+1` times `X` minus the sum of all `Pi`.
