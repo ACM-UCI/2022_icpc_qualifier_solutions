@@ -97,10 +97,10 @@ A quick note about Python: unfortunately, the bounds on the problem prevent top-
 
 ### Solution
 A reduction can be made on the problem by first finding the shortest path between every pair of vertices.
-This can easily be done with Floyd-Warshall's.
+This can easily be done with [Floyd-Warshall's](https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html).
 By finding the shortest path between every pair of vertices, you can know which refill stations are reachable from which refill stations.
 Thus, a simplified graph between the start, end, and all refill stations can be created.
-Once this simplified graph is created, it is trivial to run Dijksta's single-source-shortest-path.
+Once this simplified graph is created, it is trivial to run [Dijksta's](https://cp-algorithms.com/graph/dijkstra.html) single-source-shortest-path.
 
 
 ## [Association for the Country of Mubaba](https://open.kattis.com/problems/mububa)
@@ -119,3 +119,18 @@ A segment tree could be used here but even better amortized O(1) can be achieved
 
 
 ## [Blowing Candles](https://open.kattis.com/problems/blowingcandles)
+* Difficulty: Hard
+* Categories: Geometry, Linear Algrebra, Sorting
+* Complexity: O(N logN)
+
+### Solution
+This problem can be simplified as the task of finding the minimum width across a set of cartesian points.
+It is hopefully intuitively obvious that this minimum width will be the distance from one point to the line formed by two other points.
+This is because you want to line up the two points forming a line on one side of the strip and thus the width will inevitably be constrained by the other point.
+To find this triple pair of points you can find the [convex hull](https://cp-algorithms.com/geometry/convex-hull.html).
+The convex hull has several nice properties: any side of the convex hull is always the furthest side in the direction perpendicular and outside the polygon, all corners of the convex hull are always the furthest point in som direction.
+Thus, if you find the convex hull, you can iterate through every side and find the furthest point from that side (which will also be on the convex hull).
+The maximum of these distances is the answer.
+To find the furthest point from a side a ternary search can be used as a unimodal distribution is formed with the convex hull.
+A faster approach would be to use a two point technique because if you move from one side to another in a certain direction around the polygon the furthest point from the second side will always be in the same direction from the furthest point from the first side.
+This faster method is what is implemented in the provided solution file.
