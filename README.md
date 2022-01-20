@@ -95,7 +95,7 @@ A quick note about Python: unfortunately, the bounds on the problem prevent top-
 * Categories: All Pairs Shortest Path, Dijkstra's, Floyd-Warshall's, Graph, Single Source Shortest Path
 * Complexity: O(N^3)
 
-### Soluition
+### Solution
 A reduction can be made on the problem by first finding the shortest path between every pair of vertices.
 This can easily be done with Floyd-Warshall's.
 By finding the shortest path between every pair of vertices, you can know which refill stations are reachable from which refill stations.
