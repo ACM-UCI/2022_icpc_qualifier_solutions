@@ -134,3 +134,28 @@ The maximum of these distances is the answer.
 To find the furthest point from a side a ternary search can be used as a unimodal distribution is formed with the convex hull.
 A faster approach would be to use a two point technique because if you move from one side to another in a certain direction around the polygon the furthest point from the second side will always be in the same direction from the furthest point from the first side.
 This faster method is what is implemented in the provided solution file.
+
+
+## [Another Query on Array Problem](https://open.kattis.com/problems/queryonarray)
+* Difficulty: Hard
+* Categories: Lazy Propagation, Math, Range Sum Query, Segment Tree
+* Complexity: O(M logN)
+
+### Solution
+It should hopefully be obvious that a naive bruteforce solution is insufficient here as the complexity would be O(MN).
+Instead, a range query data structure must be used.
+Probably the easiest to implement and understand is a [segment tree](https://cp-algorithms.com/data_structures/segment_tree.html).
+
+It is, however, initially unclear how you would implement a segment tree for this specific problem.
+First notice that you are adding a sequence to a range of the form s(x) = x(x+1)(x+2).
+This can be expanded to a polynomial.
+The nice thing about adding polynomial sequences to ranges is that we only need to care about the coefficients of the polynomial.
+To find the sum of a polynomial over a range is simple in O(1) with the closed form sums over constants, x, x^2, and x^3.
+Take a look at Sum Over Sqares and Sum Over Cubes for this in the [ACM@UCI Handbook](https://github.com/ACM-UCI/DSA_Library/blob/master/acm_uci_handbook/main.pdf).
+The problem is that, using a segment tree, we need a way split a polynomial into two subtrees.
+This can be done by shifting the polynomial.
+Notice how s(x-k) = (x-k)(x+1-k)(x+2-k) yields a different polynomial.
+Thus, we can compute the resulting coefficients of a shift to get the new polynomial.
+Finally, it would still be inefficient to naively add polynomials to the segment tree.
+Instead, we must use a technique called lazy propagation which only pushes elements down the tree as is necessary.
+With all of this combined, you can solve this problem is O(M logN).
