@@ -4,6 +4,7 @@
 ## [Tarifa](https://open.kattis.com/problems/tarifa)
 * Difficulty: Easy
 * Categories: Ad-Hoc, Math
+* Complexity: O(N)
 
 ### Solution
 Simulate the problem by iterating through the `N` months and computing the carryover.
@@ -15,6 +16,7 @@ There also exists a simple mathematical solution: The answer is `N+1` times `X` 
 ## [Kleptography](https://open.kattis.com/problems/kleptography)
 * Difficulty: Easy
 * Categories: Ad-Hoc, Math, Strings
+* Complexity: O(M)
 
 ### Solution
 Starting from the back of the ciphertext, we can get the key that was used by subtracting known plaintext character from the ciphertext character.
@@ -25,6 +27,7 @@ Thus, as a plaintext character is revealed, it reveals a corresponding key which
 ## [Musical Notation](https://open.kattis.com/problems/musicalnotation)
 * Difficulty: Easy
 * Categories: Ad-Hoc, Implementation, Strings
+* Complexity: O(N)
 
 ### Solution
 This is an implementation problem so there are a variety of different ways to approach this problem.
@@ -35,6 +38,7 @@ An example of a possible approach is to build the strings for each tone on the s
 ## [Antenna Analysis](https://open.kattis.com/problems/antennaanalysis)
 * Difficulty: Medium
 * Categories: Array, Greedy, Math, Prefixes
+* Complexity: O(N)
 
 ### Solution
 To understand the intuition for solving this problem, consider the naive bruteforce solution.
@@ -48,6 +52,7 @@ With these running maximums and minimums, every step through the array we need t
 ## [Flow Free](https://open.kattis.com/problems/flowfree)
 * Difficulty: Medium
 * Categories: Backtracking, Bruteforce, DFS, Graph, Implementation
+* Complexity: Technically O(1), but if you consider number of empty cells `N` it is O(4^N).
 
 ### Solution
 To understand why a bruteforce approach works here you can analyze the complexity of the problem.
@@ -63,6 +68,7 @@ There is an interconnected relationship between all the colors so the bruteforce
 ## [Killing Chaos](https://open.kattis.com/problems/killingchaos)
 * Difficulty: Medium
 * Categories: Connected Components, Math, Offline Algorithms, Union Find
+* Complexity: O(N * inverse ackermans)
 
 ### Solution
 If you reframe the question from one about removing coaches and instead one about adding coaches, it becomes obvious that it can be reduced to a connected components problem.
@@ -74,6 +80,7 @@ Components can be merged which consequently updates the sum and reduces the numb
 ## [Aspen Avenue](https://open.kattis.com/problems/aspenavenue)
 * Difficulty: Medium
 * Categories: DP, Geometry, Sorting
+* Complexity: O(N^2)
 
 ### Solution
 For this problem it can be observed that if `i` trees in the first row and `j` trees in the second row have been placed, no matter how they were placed, the minimum cost to plant the remaining trees will be the same.
@@ -81,3 +88,19 @@ Thus, there is a topological ordering on the recurrence relation meaning dynamic
 A key observation that needs to be made is that if it is known which row each tree belongs in, you can greedily know that the relative ordering in each row must be the same as given in the input.
 An informal proof can be seen from swap argument: if the relative ordering of two trees are swapped it will always result in cost greater than or equal to what it was intially.
 A quick note about Python: unfortunately, the bounds on the problem prevent top-down recursive dp; bottom-up dp must be used instead.
+
+
+## [Slow Leak](https://open.kattis.com/problems/slowleak)
+* Difficulty: Medium
+* Categories: All Pairs Shortest Path, Dijkstra's, Floyd-Warshall's, Graph, Single Source Shortest Path
+* Complexity: O(N^3)
+
+### Soluition
+A reduction can be made on the problem by first finding the shortest path between every pair of vertices.
+This can easily be done with Floyd-Warshall's.
+By finding the shortest path between every pair of vertices, you can know which refill stations are reachable from which refill stations.
+Thus, a simplified graph between the start, end, and all refill stations can be created.
+Once this simplified graph is created, it is trivial to run Dijksta's single-source-shortest-path.
+
+
+## [Association for the Country of Mubaba](https://open.kattis.com/problems/mububa)
