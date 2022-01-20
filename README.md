@@ -69,3 +69,15 @@ If you reframe the question from one about removing coaches and instead one abou
 This reframing is achieved by reversing the order in which the coaches are removed.
 Then, using the [Union Find](https://cp-algorithms.com/data_structures/disjoint_set_union.html) data structure, keep track of the sums of each connected component and the number of connected components.
 Components can be merged which consequently updates the sum and reduces the number of cars.
+
+
+## [Aspen Avenue](https://open.kattis.com/problems/aspenavenue)
+* Difficulty: Medium
+* Categories: DP, Geometry, Sorting
+
+### Solution
+For this problem it can be observed that if `i` trees in the first row and `j` trees in the second row have been placed, no matter how they were placed, the minimum cost to plant the remaining trees will be the same.
+Thus, there is a topological ordering on the recurrence relation meaning dynamic programming can be applied.
+A key observation that needs to be made is that if it is known which row each tree belongs in, you can greedily know that the relative ordering in each row must be the same as given in the input.
+An informal proof can be seen from swap argument: if the relative ordering of two trees are swapped it will always result in cost greater than or equal to what it was intially.
+A quick note about Python: unfortunately, the bounds on the problem prevent top-down recursive dp; bottom-up dp must be used instead.
