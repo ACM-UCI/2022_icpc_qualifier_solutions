@@ -104,3 +104,18 @@ Once this simplified graph is created, it is trivial to run Dijksta's single-sou
 
 
 ## [Association for the Country of Mubaba](https://open.kattis.com/problems/mububa)
+* Difficulty: Hard
+* Categories: DP, Two Pointers
+* Complexity: O(N^2)
+
+### Solution
+The first observation that must be made about this problem is that a greedy approach is not sufficient as you cannot know how many suitcases to give to an executive without knowing information about future suitcases.
+Instead, dynamic programming must be used.
+However, naive dynamic programming --- where, starting from a specific suitcase, you try all possible number of suitcases to give to an executive --- will not work as that would be O(N^3).
+This O(N^3) occurs because at an index `i` you must search `N-i` future indices against `i` past indices to ensure the next executive gets more bananas than the previous.
+But each suitcase carries a positive number of bananas so there is a monotonic property that can be taken advantage.
+If you are considering adding a range of suitcases to one executive, it is sufficient to choose amongst the previous ranges that had equal or less bananas.
+A segment tree could be used here but even better amortized O(1) can be achieved with a two pointer approach.
+
+
+## [Blowing Candles](https://open.kattis.com/problems/blowingcandles)
